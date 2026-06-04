@@ -140,7 +140,7 @@ const WheelOfNames = () => {
     
     // Logika Rigged yang disembunyikan
     const targetName = "Hadi";
-    let targetIndex = names.indexOf(targetName);
+    let targetIndex = names.findIndex(n => n.toLowerCase() === targetName.toLowerCase());
     
     if (targetIndex === -1) {
       targetIndex = Math.floor(Math.random() * names.length);
@@ -181,8 +181,9 @@ const WheelOfNames = () => {
 
   const addName = (e) => {
     e.preventDefault();
-    if (newName.trim() && !names.includes(newName.trim())) {
-      setNames([...names, newName.trim()]);
+    const trimmedName = newName.trim();
+    if (trimmedName && !names.some(n => n.toLowerCase() === trimmedName.toLowerCase())) {
+      setNames([...names, trimmedName]);
       setNewName('');
     }
   };
