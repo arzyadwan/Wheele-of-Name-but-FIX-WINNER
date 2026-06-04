@@ -1,25 +1,24 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import confetti from 'canvas-confetti';
 import './App.css';
 
+// Lebih modern dan vibrant palette
+const colors = [
+  '#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4', '#FFEEAD', 
+  '#D4A5A5', '#9B59B6', '#3498DB', '#F1C40F', '#E74C3C'
+];
+
 const WheelOfNames = () => {
-  const [names, setNames] = useState('');
+  const [names, setNames] = useState(['Ali', 'Budi', 'Hadi', 'Citra', 'Dewi']);
   const [newName, setNewName] = useState('');
   const [winner, setWinner] = useState(null);
   const [isSpinning, setIsSpinning] = useState(false);
   
   const canvasRef = useRef(null);
-  const startAngle = useRef(0);
   const currentAngle = useRef(0);
-  const spinTimeTotal = 5000; // Total waktu putaran 5 detik
+  const spinTimeTotal = 5000; 
 
-  // Lebih modern dan vibrant palette
-  const colors = [
-    '#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4', '#FFEEAD', 
-    '#D4A5A5', '#9B59B6', '#3498DB', '#F1C40F', '#E74C3C'
-  ];
-
-  const drawWheel = () => {
+  const drawWheel = useCallback(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
@@ -122,11 +121,11 @@ const WheelOfNames = () => {
     ctx.lineTo(radius + 10, 15);
     ctx.lineTo(radius, 32);
     ctx.fill();
-  };
+  }, [names]);
 
   useEffect(() => {
     drawWheel();
-  }, [names]);
+  }, [drawWheel]);
 
   const easeOut = (t) => 1 - Math.pow(1 - t, 3);
 
