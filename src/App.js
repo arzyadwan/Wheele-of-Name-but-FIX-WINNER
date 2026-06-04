@@ -9,7 +9,7 @@ const colors = [
 ];
 
 const WheelOfNames = () => {
-  const [names, setNames] = useState('');
+  const [names, setNames] = useState(['Ali', 'Budi', 'Hadi', 'Citra', 'Dewi']);
   const [newName, setNewName] = useState('');
   const [winner, setWinner] = useState(null);
   const [isSpinning, setIsSpinning] = useState(false);

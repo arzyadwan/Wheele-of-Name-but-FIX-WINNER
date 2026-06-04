@@ -271,3 +271,70 @@
   from { transform: scale(0.8); opacity: 0; }
   to { transform: scale(1); opacity: 1; }
 }
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .app-container {
+    padding: 20px 10px;
+  }
+  
+  .title {
+    font-size: 2.2rem;
+    margin-bottom: 25px;
+  }
+  
+  .main-content {
+    gap: 30px;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .sidebar {
+    width: 100%;
+    max-width: 450px;
+    box-sizing: border-box;
+  }
+  
+  .wheel-container {
+    width: 100%;
+    max-width: 450px;
+    box-sizing: border-box;
+    padding: 20px 15px;
+  }
+  
+  .canvas-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .canvas-wrapper canvas {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .spin-button {
+    font-size: 18px;
+    padding: 14px 40px;
+  }
+  
+  .winner-modal {
+    padding: 30px 20px;
+    width: 90%;
+    box-sizing: border-box;
+  }
+  
+  .winner-name {
+    font-size: 48px;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 1.8rem;
+  }
+  
+  .winner-name {
+    font-size: 36px;
+  }
+}
