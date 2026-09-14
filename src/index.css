@@ -7,9 +7,32 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background:
+    radial-gradient(circle at 14% 16%, rgba(66, 133, 225, 0.3), transparent 32rem),
+    radial-gradient(circle at 88% 84%, rgba(190, 24, 93, 0.22), transparent 34rem),
+    radial-gradient(circle at 82% 8%, rgba(124, 58, 237, 0.24), transparent 23rem),
+    linear-gradient(135deg, #020617 0%, #0f172a 48%, #1e1b4b 100%);
+  background-attachment: fixed;
   min-height: 100vh;
-  color: #333;
+  overflow-x: hidden;
+  color: #f8fafc;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: radial-gradient(rgba(196, 181, 253, 0.18) 1px, transparent 1px);
+  background-size: 28px 28px;
+  mask-image: linear-gradient(135deg, rgba(0, 0, 0, 0.5), transparent 72%);
+}
+
+#root {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
 }
 
 code {

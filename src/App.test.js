@@ -1,8 +1,14 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
+jest.mock('./Wheel3D', () => () => <div data-testid="wheel-3d" />);
+
+test('renders the 3D wheel and participant controls', () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+
+  expect(screen.getByTestId('wheel-3d')).toBeInTheDocument();
+  expect(screen.getByRole('heading', { name: /daftar nama/i })).toBeInTheDocument();
+  expect(screen.getByRole('textbox', { name: /nama peserta baru/i })).toBeInTheDocument();
+  expect(screen.queryByText(/klik wheel untuk memutar/i)).not.toBeInTheDocument();
+  expect(document.querySelector('.wheel-container')).not.toBeInTheDocument();
 });
