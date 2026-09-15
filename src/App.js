@@ -62,7 +62,7 @@ const WheelOfNames = () => {
     setWinner(null);
     playTone(330, 0.06, 0.035);
     setSpinCommand({ id: Date.now(), winnerIndex });
-  }, [isSpinning, names.length, playTone]);
+  }, [isSpinning, names, playTone]);
 
   const handleTick = useCallback((progress) => {
     const frequency = 220 + (1 - progress) * 150;
