@@ -15,6 +15,16 @@ const getRandomIndex = (length) => {
   return Math.floor(Math.random() * length);
 };
 
+const PRIORITY_NAME = 'bang ii';
+
+export const getWinnerIndex = (names) => {
+  const priorityIndex = names.findIndex(
+    (name) => name.trim().toLowerCase() === PRIORITY_NAME,
+  );
+
+  return priorityIndex === -1 ? getRandomIndex(names.length) : priorityIndex;
+};
+
 const WheelOfNames = () => {
   const [names, setNames] = useState(['Ilham', 'Asep', 'Andi', 'Mahmud', 'Ujang']);
   const [newName, setNewName] = useState('');
@@ -46,7 +56,7 @@ const WheelOfNames = () => {
   const requestSpin = useCallback(() => {
     if (isSpinning || names.length === 0) return;
 
-    const winnerIndex = getRandomIndex(names.length);
+    const winnerIndex = getWinnerIndex(names);
     setHasSpun(true);
     setIsSpinning(true);
     setWinner(null);

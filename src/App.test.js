@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import App from './App';
+import App, { getWinnerIndex } from './App';
 
 jest.mock('./Wheel3D', () => () => <div data-testid="wheel-3d" />);
 
@@ -12,3 +12,10 @@ test('renders the 3D wheel and participant controls', () => {
   expect(screen.queryByText(/klik wheel untuk memutar/i)).not.toBeInTheDocument();
   expect(document.querySelector('.wheel-container')).not.toBeInTheDocument();
 });
+
+test.each(['bang ii', 'BANG II', 'Bang Ii', 'bAnG iI'])(
+  'gives %s priority as the winner regardless of letter case',
+  (priorityName) => {
+    expect(getWinnerIndex(['Ilham', priorityName, 'Asep'])).toBe(1);
+  },
+);
