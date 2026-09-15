@@ -15,7 +15,7 @@ const getRandomIndex = (length) => {
   return Math.floor(Math.random() * length);
 };
 
-const PRIORITY_NAME = 'bang ii';
+const PRIORITY_NAME = 'kaivan atl';
 
 export const getWinnerIndex = (names) => {
   const priorityIndex = names.findIndex(

@@ -13,7 +13,7 @@ test('renders the 3D wheel and participant controls', () => {
   expect(document.querySelector('.wheel-container')).not.toBeInTheDocument();
 });
 
-test.each(['bang ii', 'BANG II', 'Bang Ii', 'bAnG iI'])(
+test.each(['kaivan atl', 'KAIVAN ATL', 'Kaivan Atl', 'kAiVaN aTl'])(
   'gives %s priority as the winner regardless of letter case',
   (priorityName) => {
     expect(getWinnerIndex(['Ilham', priorityName, 'Asep'])).toBe(1);
